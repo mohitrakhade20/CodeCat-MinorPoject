@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Avatar } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 function Copyright() {
   return (
@@ -50,9 +51,11 @@ const [fname,setFname]=useState('');
 const [lname,setLname]=useState('');
 const [email,setEmail]=useState('');
 const [pass,setPass]=useState('');
+const history = useHistory();
 const onSignup=(e)=>{
   e.preventDefault();
   console.log("Register data : ",fname,lname,email,pass);
+  history.push("/play/instructions");
 }
   return (
     <Container component="main" maxWidth="xs">
@@ -129,6 +132,7 @@ const onSignup=(e)=>{
               />
             </Grid>
           </Grid>
+          {/* <Link to="/play/instructions" className="auth-buttons" id="login-button"> */}
           <Button
             type="submit"
             onClick={onSignup}
@@ -139,6 +143,7 @@ const onSignup=(e)=>{
           >
             Sign Up
           </Button>
+          {/* </Link> */}
           <Grid container justify="flex-end">
             <Grid item>
               <Link to="/login" className="auth-buttons" id="login-button">

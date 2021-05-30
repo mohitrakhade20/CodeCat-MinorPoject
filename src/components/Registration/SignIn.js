@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Input } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+
 
 function Copyright() {
   return (
@@ -49,9 +51,11 @@ export default function SignIn() {
   const classes = useStyles();
   const [email,setEmail]=useState('');
   const [pass,setPass]=useState('');
+  const history = useHistory();
   const onSignin=(e)=>{
     e.preventDefault();
     console.log("Login data : ",email,pass);
+    history.push("/play/instructions");
   }
   return (
     <div>
