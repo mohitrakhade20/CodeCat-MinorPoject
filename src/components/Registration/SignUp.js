@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 // import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -46,7 +46,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
-
+const [fname,setFname]=useState('');
+const [lname,setLname]=useState('');
+const [email,setEmail]=useState('');
+const [pass,setPass]=useState('');
+const onSignup=(e)=>{
+  e.preventDefault();
+  console.log("Register data : ",fname,lname,email,pass);
+}
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -65,6 +72,8 @@ export default function SignUp() {
                underlineStyle={{display: 'none'}}
                 autoComplete="fname"
                 name="firstName"
+                value={fname}
+                onChange={e=>setFname(e.target.value)}
                 // variant="outlined"
                 required
                 fullWidth
@@ -83,6 +92,8 @@ export default function SignUp() {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
+                value={lname}
+                onChange={e=>setLname(e.target.value)}
                 autoComplete="lname"
               />
             </Grid>
@@ -96,6 +107,8 @@ export default function SignUp() {
                 id="email"
                 label="Email Address"
                 name="email"
+                value={email}
+                onChange={e=>setEmail(e.target.value)}
                 autoComplete="email"
               />
             </Grid>
@@ -107,6 +120,8 @@ export default function SignUp() {
                 required
                 fullWidth
                 name="password"
+                value={pass}
+                onChange={e=>setPass(e.target.value)}
                 label="Password"
                 type="password"
                 id="password"
@@ -116,6 +131,7 @@ export default function SignUp() {
           </Grid>
           <Button
             type="submit"
+            onClick={onSignup}
             fullWidth
             variant="contained"
             color="primary"

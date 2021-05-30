@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -47,7 +47,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
-
+  const [email,setEmail]=useState('');
+  const [pass,setPass]=useState('');
+  const onSignin=(e)=>{
+    e.preventDefault();
+    console.log("Login data : ",email,pass);
+  }
   return (
     <div>
     <Container component="main" maxWidth="xs">
@@ -70,6 +75,8 @@ export default function SignIn() {
             id="email"
             label="Email Address"
             name="email"
+                value={email}
+                onChange={e=>setEmail(e.target.value)}
             autoComplete="email"
             autoFocus
           />
@@ -81,6 +88,8 @@ export default function SignIn() {
             required
             fullWidth
             name="password"
+                value={pass}
+                onChange={e=>setPass(e.target.value)}
             label="Password"
             type="password"
             id="password"
@@ -92,6 +101,7 @@ export default function SignIn() {
           />
           <Button
             type="submit"
+            onClick={onSignin}
             fullWidth
             variant="contained"
             color="primary"
