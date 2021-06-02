@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Input } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import {signin, authenticate, isAutheticated} from "./auth"
 
 
 function Copyright() {
@@ -49,14 +50,53 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
-  const [email,setEmail]=useState('');
-  const [pass,setPass]=useState('');
+  // const [email,setEmail]=useState('');
+  // const [pass,setPass]=useState('');
   const history = useHistory();
+
+  const [values, setValues] = useState({
+    email: "adp@admin.in",
+    password: "",
+    error: "",
+    loading: false,
+    didRedirect: false
+  });
+
+  const { email, password, error, loading, didRedirect } = values;
+  const { user } = isAutheticated();
+
+  const handleChange = name => event => {
+    setValues({ ...values, error: false, [name]: event.target.value });
+  };
+   const onSubmit = event => {
+    event.preventDefault();
+    setValues({ ...values, error: false, loading: true });
+    signin({ email, password })
+      .then(data => {
+        if (data.error) {
+          setValues({ ...values, error: data.error, loading: false });
+        } else {
+          authenticate(data, () => {
+         
+
+            setValues({
+              
+              ...values,
+              didRedirect: true
+            });
+          });
+        }
+      })
+      
+  };
+
+
   const onSignin=(e)=>{
     e.preventDefault();
-    console.log("Login data : ",email,pass);
-    history.push("/play/instructions");
-  }
+    
+    // console.log("Login data : ",email,pass);
+    // history.push("/play/instructions");
+   }
   return (
     <div>
     <Container component="main" maxWidth="xs">
@@ -69,43 +109,27 @@ export default function SignIn() {
           Sign in
         </Typography>
         <form className={classes.form} noValidate>
-          <TextField 
-            InputProps={{ disableUnderline: true }}
-            underlineStyle={{display: 'none'}}
-            // variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
+        <input
+                onChange={handleChange("email")}
                 value={email}
-                onChange={e=>setEmail(e.target.value)}
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            InputProps={{ disableUnderline: true }}
-            underlineStyle={{display: 'none'}}
-            // variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-                value={pass}
-                onChange={e=>setPass(e.target.value)}
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
+                placeholder="enter email "
+                className="form-control"
+                type="email"
+              />
+      <input
+                onChange={handleChange("password")}
+                value={password}
+                placeholder="enter password"
+                className="form-control"
+                type="password"
+              />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
           <Button
             type="submit"
-            onClick={onSignin}
+            onClick={onSubmit}
             fullWidth
             variant="contained"
             color="primary"
