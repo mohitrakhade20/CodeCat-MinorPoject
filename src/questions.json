@@ -1,136 +1,136 @@
 [
     {
-        "question": "What temperature does water boil at?",
-        "optionA": "50 degrees Celcius",
-        "optionB": "25 degrees Celcius",
-        "optionC": "100 degrees Celcius",
-        "optionD": "150 degrees Celcius",
-        "answer": "100 degrees Celcius"
+        "question": "Which one of the following is the size of int arr[9] assuming that int is of 4 bytes?",
+        "optionA": "9",
+        "optionB": "36",
+        "optionC": "35",
+        "optionD": "None of the above",
+        "answer": "36"
     },
 
     {
-        "question": "Who wrote Julius Caesar, Macbeth and Hamlet?",
-        "optionA": "Wole Soyinka",
-        "optionB": "William Shakespeare",
-        "optionC": "Ngozi Chimamanda Adichie",
-        "optionD": "Dan Brown",
-        "answer": "William Shakespeare"
+        "question": "Which one of the following is the process of inserting an element in the stack?",
+        "optionA": "insert",
+        "optionB": "add",
+        "optionC": "push",
+        "optionD": "pop",
+        "answer": "push"
     },
 
     {
-        "question": "What did the crocodile swallow in Peter Pan?",
-        "optionA": "A Book",
-        "optionB": "A Computer",
-        "optionC": "A pair of shoes",
-        "optionD": "Alarm Clock",
-        "answer": "Alarm Clock"
+        "question": "When the user tries to delete the element from the empty stack then the condition is said to be a ____",
+        "optionA": "Underflow",
+        "optionB": "Overflow",
+        "optionC": "Garbage collection",
+        "optionD": "None of these",
+        "answer": "Overflow"
     },
 
     {
-        "question": "Which is the only mammal that can’t jump?",
-        "optionA": "Dog",
-        "optionB": "Elephant",
-        "optionC": "Goat",
-        "optionD": "Lion",
-        "answer": "Elephant"
+        "question": "Which one of the following is not the application of the stack data structure",
+        "optionA": "String reversal",
+        "optionB": "Recursion",
+        "optionC": "Backtracking",
+        "optionD": "Asynchronous data transfer",
+        "answer": "Asynchronous data transfer"
     },
 
     {
-        "question": "Who lived at 221B, Baker Street, London?",
-        "optionA": "Tony Stark",
-        "optionB": "Morgan Freeman",
-        "optionC": "Sherlock Holmes",
-        "optionD": "Samuel L. Jackson",
-        "answer": "Sherlock Holmes"
+        "question": "Which data structure is mainly used for implementing the recursive algorithm?",
+        "optionA": "Queue",
+        "optionB": "Stack",
+        "optionC": "Binary tree",
+        "optionD": "Linked list",
+        "answer": "Stack"
     },
 
     {
-        "question": "What colour is a panda?",
-        "optionA": "Green and Yellow",
-        "optionB": "Blue and Red",
-        "optionC": "Green and White",
-        "optionD": "Black and White",
-        "answer": "Black and White"
+        "question": "Which of the following is the infix expression?",
+        "optionA": "A+B*C",
+        "optionB": "+A*BC",
+        "optionC": "ABC+*",
+        "optionD": "None of the above",
+        "answer": "A+B*C"
     },
 
     {
-        "question": "Where is the smallest bone in the human body?",
-        "optionA": "The Chest",
-        "optionB": "The Ear",
-        "optionC": "The Legs",
-        "optionD": "The Hands",
-        "answer": "The Ear"
+        "question": "What is another name for the circular queue among the following options?",
+        "optionA": "Square buffer",
+        "optionB": "Rectangle buffer",
+        "optionC": "Ring buffer",
+        "optionD": "None of the above",
+        "answer": "Ring buffer"
     },
 
     {
-        "question": "What does the roman numeral C represent?",
-        "optionA": "100",
-        "optionB": "10",
-        "optionC": "10,000",
-        "optionD": "1,000,000",
-        "answer": "100"
+        "question": "Which one of the following is not the type of the Queue?",
+        "optionA": "Linear Queue",
+        "optionB": "Circular Queue",
+        "optionC": "Double ended Queue",
+        "optionD": "Single ended Queue",
+        "answer": "Single ended Queue"
     },
 
     {
-        "question": "What takes place in Hong Kong's Happy Valley?",
-        "optionA": "Chicken Wrestling",
-        "optionB": "Horse racing",
-        "optionC": "Street Racing",
-        "optionD": "Arm Wrestling",
-        "answer": "Horse racing"
+        "question": "What is the maximum number of children that a node can have in a binary tree?",
+        "optionA": "3",
+        "optionB": "2",
+        "optionC": "1",
+        "optionD": "0",
+        "answer": "2"
     },
 
     {
-        "question": "Who painted the Mona Lisa?",
-        "optionA": "Alexander Graham Bell",
-        "optionB": "Sir Isaac Newton",
-        "optionC": "Leonardo Da Vinci",
-        "optionD": "Albert Einstein",
-        "answer": "Leonardo Da Vinci"
+        "question": "Which of the following has search effeciency of Ο(1)",
+        "optionA": "Tree",
+        "optionB": "Heap",
+        "optionC": "Linked List",
+        "optionD": "Hash Table",
+        "answer": "Hash Table"
     },
 
     {
-        "question": "What’s the most important book in the Moslem religion?",
-        "optionA": "The Koran",
-        "optionB": "The Dictionary",
-        "optionC": "The Bible",
-        "optionD": "The Chemistry text Book",
-        "answer": "The Koran"
+        "question": "Which one of the following is the correct option to create a new node?",
+        "optionA": "ptr= (node*)malloc(sizeof(node*))",
+        "optionB": "ptr=(node)malloc(sizeof(node))",
+        "optionC": "ptr=(node*)malloc(sizeof(node))",
+        "optionD": "None of the above",
+        "answer": "ptr=(node*)malloc(sizeof(node))"
     },
 
     {
-        "question": "What’s the capital of Ethiopia?",
-        "optionA": "Cape Town",
-        "optionB": "San Francisco",
-        "optionC": "Abuja",
-        "optionD": "Syndey",
-        "answer": "Addis Ababa"
+        "question": "Recursion uses more memory space than iteration because",
+        "optionA": "every recursive call has to be stored",
+        "optionB": "it uses stack instead of queue",
+        "optionC": "Both A and B are true",
+        "optionD": "None of above are true",
+        "answer": "every recursive call has to be stored"
     },
 
     {
-        "question": "How many squares are there on a chess board?",
-        "optionA": "128",
-        "optionB": "64",
-        "optionC": "32",
-        "optionD": "256",
-        "answer": "64"
+        "question": "Which one of the following techniques is not used in the Binary tree?",
+        "optionA": "Randomized traversal",
+        "optionB": "Preorder traversal",
+        "optionC": "Postorder traversal",
+        "optionD": "Inorder traversal",
+        "answer": "Randomized traversal"
     },
 
     {
-        "question": "Who invented the electric light bulb?",
-        "optionA": "Tom Cruise",
-        "optionB": "Barack Obama",
-        "optionC": "Wole Soyinka",
-        "optionD": "Thomas Edison",
-        "answer": "Thomas Edison"
+        "question": "The necessary condition to be checked before deletion from the Queue is__",
+        "optionA": "Overflow",
+        "optionB": "Underflow",
+        "optionC": "Front value",
+        "optionD": "Rear value",
+        "answer": "Underflow"
     },
 
     {
-        "question": "What are the first three words of the bible?",
-        "optionA": "be with everyone",
-        "optionB": "Again Jesus asked",
-        "optionC": "In the beginning",
-        "optionD": "At that time",
-        "answer": "In the beginning"
+        "question": "Which one of the following is not the application of the Queue data structure?",
+        "optionA": "Resource shared between various systems",
+        "optionB": "Data is transferred asynchronously",
+        "optionC": "Load balancing",
+        "optionD": "Balancing of symbols",
+        "answer": "Balancing of symbols"
     }
 ]

@@ -45,20 +45,6 @@ const Sign = () => {
   const handleChange = name => event => {
     setValues({ ...values, error: false, [name]: event.target.value });
   };
-// const performRedirect = () => {
-//     if (didRedirect) {
-//         if (user && user.role === 1) {
-//             return <Redirect to="/admin/dashboard" />;
-//         } else {
-//             return <Redirect to="/play/instructions" />
-//             // return <Redirect to="/" />;
-//       }
-//     }
-    // if (isAutheticated()) {
-    //   return <Redirect to="/" />;
-    // }
-//   };
-
   const onSubmit = event => {
     event.preventDefault();
     setValues({ ...values, error: false, loading: true });
@@ -69,47 +55,16 @@ const Sign = () => {
           setValues({ ...values, error: data.error, loading: false });
         } else {
           authenticate(data, () => {
-         
               setValues({
-                  
                   ...values,
                   didRedirect: true
                 })
                 if(didRedirect== 1) {window.location = "/play/instructions"} 
                 // else { window.location="/"}
- 
-
             });
-                
         }
     })
-    
 };
-
-
-//   const loadingMessage = () => {
-//     return (
-//       loading && (
-//         // <Example/>
-//         <h1>hi</h1>  
-//         )
-//     );
-//   };
-
-//   const errorMessage = () => {
-//     return (
-//       <div className="row">
-//         <div className="col-md-6 offset-sm-3 text-left">
-//           <div
-//             className="alert alert-danger"
-//             style={{ display: error ? "" : "none" }}
-//           >
-//             {error}
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   };
 
   const signInForm = () => {
     return (
@@ -166,15 +121,9 @@ const Sign = () => {
   };
 
   return (
-    // <Base title="ADP ATLAS" >
     <div>
-      {/* {loadingMessage()} */}
-      {/* {errorMessage()} */}
       {signInForm()}
-      {/* { performRedirect()} */}
 </div>
-    //   {/* <p className="text-white text-center">{JSON.stringify(values)}</p> */}
-    // </Base>
   );
 };
 

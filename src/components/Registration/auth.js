@@ -8,6 +8,7 @@ export const signup = user => {
       body: JSON.stringify(user)
     })
       .then(response => {
+        console.log("x", response)
         return response.json();
       })
       .catch(err => console.log(err));

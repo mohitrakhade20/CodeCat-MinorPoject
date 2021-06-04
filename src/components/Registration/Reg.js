@@ -13,6 +13,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Avatar } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
+import { signup, authenticate, isAutheticated } from "./auth";
 
 function Copyright() {
   return (
@@ -45,18 +47,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function Reg() {
   const classes = useStyles();
-const [fname,setFname]=useState('');
-const [lname,setLname]=useState('');
-const [email,setEmail]=useState('');
-const [pass,setPass]=useState('');
-const history = useHistory();
-const onSignup=(e)=>{
-  e.preventDefault();
-  console.log("Register data : ",fname,lname,email,pass);
-  // history.push("/play/instructions");
-}
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+    password: "",
+    error: "",
+    loading: false,
+    didRedirect: false
+  });
+  const { name,email, password, error, loading, didRedirect } = values;
+  const { user } = isAutheticated();
+
+  const handleChange = name => event => {
+    setValues({ ...values, error: false, [name]: event.target.value });
+  };
+  const onSubmit = event => {
+    event.preventDefault();
+    setValues({ ...values, error: false, loading: true });
+    signup({name, email, password })
+      .then(data => {
+          console.log("datda",data)
+        if (data.error) {
+          setValues({ ...values, error: data.error, loading: false });
+        } else {
+          authenticate(data, () => {
+              setValues({
+                  ...values,
+                  didRedirect: true
+                })
+                if(didRedirect== 1) {window.location = "/play/instructions"} 
+            });
+        }
+    })
+};
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -69,35 +94,20 @@ const onSignup=(e)=>{
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
               InputProps={{ disableUnderline: true }}
                underlineStyle={{display: 'none'}}
-                autoComplete="fname"
-                name="firstName"
-                value={fname}
-                onChange={e=>setFname(e.target.value)}
+                autoComplete="name"
+                name="name"
+                onChange={handleChange("name")}
+                value={name}
                 // variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="name"
+                label="Name"
                 autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                // variant="outlined"
-                InputProps={{ disableUnderline: true }}
-                underlineStyle={{display: 'none'}}
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                value={lname}
-                onChange={e=>setLname(e.target.value)}
-                autoComplete="lname"
               />
             </Grid>
             <Grid item xs={12}>
@@ -110,8 +120,8 @@ const onSignup=(e)=>{
                 id="email"
                 label="Email Address"
                 name="email"
+                onChange={handleChange("email")}
                 value={email}
-                onChange={e=>setEmail(e.target.value)}
                 autoComplete="email"
               />
             </Grid>
@@ -123,8 +133,8 @@ const onSignup=(e)=>{
                 required
                 fullWidth
                 name="password"
-                value={pass}
-                onChange={e=>setPass(e.target.value)}
+                value={password}
+                onChange={handleChange("password")}
                 label="Password"
                 type="password"
                 id="password"
@@ -135,7 +145,7 @@ const onSignup=(e)=>{
           {/* <Link to="/play/instructions" className="auth-buttons" id="login-button"> */}
           <Button
             type="submit"
-            onClick={onSignup}
+            onClick={onSubmit}
             fullWidth
             variant="contained"
             color="primary"
