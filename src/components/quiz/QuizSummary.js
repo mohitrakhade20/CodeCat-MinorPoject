@@ -36,17 +36,17 @@ class QuizSummary extends Component {
         let stats, remark;
         const userScore = this.state.score;
 
-        if (userScore <= 30 ) {
-            remark = 'You need more practice!';
-        } else if (userScore > 30 && userScore <= 50) {
-            remark = 'Better luck next time!';
-        } else if (userScore <= 70 && userScore > 50) {
-            remark = 'You can do better!';
-        } else if (userScore >= 71 && userScore <= 84) {
-            remark = 'You did great!';
-        } else {
-            remark = 'You\'re an absolute genius!';
-        }
+        // if (userScore <= 30 ) {
+        //     remark = 'You need more practice!';
+        // } else if (userScore > 30 && userScore <= 50) {
+        //     remark = 'Better luck next time!';
+        // } else if (userScore <= 70 && userScore > 50) {
+        //     remark = 'You can do better!';
+        // } else if (userScore >= 71 && userScore <= 84) {
+        //     remark = 'You did great!';
+        // } else {
+            remark = 'Your Response is submitted';
+        // }
 
         if (state !== undefined) {
             stats = (
@@ -54,7 +54,7 @@ class QuizSummary extends Component {
                     <div style={{ textAlign: 'center' }}>
                         <span className="mdi mdi-check-circle-outline success-icon"></span>
                     </div>
-                    <h1>Quiz has ended</h1>
+                    <h1>Thanks for using CodeCat !</h1>
                     <div className="container stats">
                         <h4>{remark}</h4>
                         <h2>Your Score: {this.state.score.toFixed(0)}&#37;</h2>
@@ -69,12 +69,6 @@ class QuizSummary extends Component {
 
                         <span className="stat left">Number of Wrong Answers: </span>
                         <span className="right">{this.state.wrongAnswers}</span><br />
-
-                        <span className="stat left">Hints Used: </span>
-                        <span className="right">{this.state.hintsUsed}</span><br />
-
-                        <span className="stat left">50-50 Used: </span>
-                        <span className="right">{this.state.fiftyFiftyUsed}</span>
                     </div>
                     <section>
                         <ul>

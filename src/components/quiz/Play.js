@@ -318,7 +318,7 @@ class Play extends Component {
     }
 
     endGame = () => {
-        alert('Quiz has eneded!');
+        alert('Test has eneded!');
         const { state } = this;
         const playerStats = {
             score: state.score,
@@ -353,7 +353,7 @@ class Play extends Component {
                     <audio ref={this.buttonSound} src={buttonSound}></audio>
                 </Fragment>
                 <div className="questions">
-                    <h2>Quiz Mode</h2>
+                    {/* <h2>Quiz Mode</h2> */}
                     <div className="lifeline-container">
                         <p>
                             <span onClick={this.handleFiftyFifty} className="mdi mdi-set-center mdi-24px lifeline-icon">
