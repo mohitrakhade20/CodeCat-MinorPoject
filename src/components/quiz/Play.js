@@ -49,7 +49,19 @@ class Play extends Component {
         clearInterval(this.interval);
     }
 
-    displayQuestions = (questions = this.state.questions, currentQuestion, nextQuestion, previousQuestion) => {
+    displayQuestions = (questionsOld = this.state.questions, currentQuestion, nextQuestion, previousQuestion) => {
+      // Fucntion to shuffle the array content
+      function shuffleArray(questionsOld) {
+        for (var i = questionsOld.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = questionsOld[i];
+            questionsOld[i] = questionsOld[j];
+            questionsOld[j] = temp;
+        }
+        return questionsOld;
+    }
+    var questions=shuffleArray(questionsOld);
+    console.log("ques: ",questions)
         let { currentQuestionIndex } = this.state;   
         if (!isEmpty(this.state.questions)) {
             questions = this.state.questions;

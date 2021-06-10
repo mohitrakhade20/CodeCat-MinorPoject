@@ -13,6 +13,7 @@ import Reg from './components/Registration/Reg';
 // import FileUpload from './components/quiz/FileUpload';
 import Subjective from './components/quiz/Subjective';
 import EndTest from './components/quiz/EndTest';
+import AdminAddQuestion from './components/admin/AdminAddQuestion';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="/register" exact component={Reg}/>
       <Route path="/endTest" exact component={EndTest}/>
       <Route path="/ct" exact component={Subjective}/>
+      <Route path="/admin/add" exact component={AdminAddQuestion}/>
       {/* <Route path="/uploadAns" exact component={FileUpload}/> */}
       <Route path="/play/instructions" exact component={QuizInstructions} />
       <Route path="/play/quiz" exact component={Play} />
