@@ -3,14 +3,17 @@ import { Helmet } from 'react-helmet';
 import M from 'materialize-css';
 import classnames from 'classnames';
 
-import questions from '../../questions.json';
+import questions from '../../subjectiveQues.json';
 import isEmpty from '../../utils/is-empty';
 
 import correctNotification from '../../assets/audio/correct-answer.mp3';
 import wrongNotification from '../../assets/audio/wrong-answer.mp3';
 import buttonSound from '../../assets/audio/button-sound.mp3';
+import Progress from './Progress';
+import Message from './Message';
+import FileUpload from './FileUpload';
 
-class Play extends Component {
+class Subjective extends Component {
     constructor (props) {
         super(props);
         this.state = {
@@ -49,7 +52,19 @@ class Play extends Component {
         clearInterval(this.interval);
     }
 
-    displayQuestions = (questions = this.state.questions, currentQuestion, nextQuestion, previousQuestion) => {
+    displayQuestions = (questionsOld = this.state.questions, currentQuestion, nextQuestion, previousQuestion) => {
+        // Fucntion to shuffle the array content
+        function shuffleArray(questionsOld) {
+            for (var i = questionsOld.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = questionsOld[i];
+                questionsOld[i] = questionsOld[j];
+                questionsOld[j] = temp;
+            }
+            return questionsOld;
+        }
+        var questions=shuffleArray(questionsOld);
+        console.log("ques: ",questions)
         let { currentQuestionIndex } = this.state;   
         if (!isEmpty(this.state.questions)) {
             questions = this.state.questions;
@@ -110,7 +125,7 @@ class Play extends Component {
     handleQuitButtonClick = () => {
         this.playButtonSound();
         if (window.confirm('Are you sure you want to quit?')) {
-            this.props.history.push('/');
+            this.props.history.push('/endTest');
         }
     };
 
@@ -243,19 +258,10 @@ class Play extends Component {
     }
 
     endGame = () => {
-        alert('Test has eneded!');
+        alert('Test has ended!');
         const { state } = this;
-        const playerStats = {
-            score: state.score,
-            numberOfQuestions: state.numberOfQuestions,
-            numberOfAnsweredQuestions: state.correctAnswers + state.wrongAnswers,
-            correctAnswers: state.correctAnswers,
-            wrongAnswers: state.wrongAnswers,
-            fiftyFiftyUsed: 2 - state.fiftyFifty,
-            hintsUsed: 5 - state.hints
-        };
         setTimeout(() => {
-            this.props.history.push('/play/quizSummary', playerStats);
+            this.props.history.push('/endTest');
         }, 1000);
     }
 
@@ -291,15 +297,7 @@ class Play extends Component {
                         </p>
                     </div>
                     <h5>{currentQuestion.question}</h5>
-                    <div className="options-container">
-                        <p onClick={this.handleOptionClick} className="option">{currentQuestion.optionA}</p>
-                        <p onClick={this.handleOptionClick} className="option">{currentQuestion.optionB}</p>
-                    </div>
-                    <div className="options-container">
-                        <p onClick={this.handleOptionClick} className="option">{currentQuestion.optionC}</p>
-                        <p onClick={this.handleOptionClick} className="option">{currentQuestion.optionD}</p>
-                    </div>
-
+                       <FileUpload/>
                     <div className="button-container">
                         <button 
                             className={classnames('', {'disable': this.state.nextButtonDisabled})}
@@ -315,4 +313,4 @@ class Play extends Component {
     }
 }
 
-export default Play;
+export default Subjective;

@@ -1,3 +1,19 @@
+export const uploadAns = (formdata) => {
+  console.log("req", formdata.get('files'))
+    return fetch(`http://localhost:8001/api/upload`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formdata)
+    })
+      .then(response => {
+        console.log("x up ", response)
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
 export const signup = user => {
     return fetch(`http://localhost:8001/api/signup`, {
       method: "POST",

@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import online from '../assets/images/online_exam2.png';
+
 
 const Home = () => (
     <Fragment>
@@ -22,6 +24,7 @@ const Home = () => (
                 </div>
             </section>
         </div>
+            <img alt='Online Exam' src={online} style={{width:'250px',height:'250px','marginTop':'-279px'}}/>
     </Fragment>
 );
 
